@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="row">
+  <h1>Youtube Party!</h1>
+</div>
+{% for q in queue %}
+<div class="row">
+    {{q}}
+  </div>
+{% endfor %}
+
+<div class="row">
+  <div class="large-4 columns">
+    <form method="post">
+      <fieldset>
+        <legend>Url upload</legend>
+        <div class="row">
+          <div class="large-12 columns">
+            <input type="text" name="youtube-url" placeholder="youtube url">
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <button type="submit">Upload</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}

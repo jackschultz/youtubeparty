@@ -1,0 +1,11 @@
+*pyc
+
+*.swp
+
+#packages
+*.egg
+*.egg-info
+eggs
+
+pip-log.txt
+
