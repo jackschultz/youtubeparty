@@ -1,19 +1,15 @@
 from flask import Flask, render_template, url_for, request, redirect
+
+import os
+
 app = Flask(__name__)
 
-dumb_db = []
+env = os.environ.get('YTP_ENV','prod')
+app.config.from_object('youtubeparty.settings.DevConfig')
+app.debug = True
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
-  if request.method == 'POST':
-    dumb_db.append(request.form['youtube-url'])
-  return render_template('index.html', queue=dumb_db)
-
-@app.route('/upload-url', methods=['POST'])
-def upload_url():
-  dumb_db.append(request.form['youtube-url'])
-  return redirect(url_for('index'))
+import youtubeparty.views
+import youtubeparty.models
 
 if __name__ == '__main__':
-  app.debug = True
   app.run()

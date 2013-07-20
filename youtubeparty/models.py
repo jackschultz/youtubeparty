@@ -1,6 +1,6 @@
-from flask_sqlalchemy import SQLAlchemy
-import app
+from youtubeparty import app
 
+from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy(app)
 
 class YTUrl(db.Model):
@@ -12,3 +12,6 @@ class YTUrl(db.Model):
 
   def __repr__(self):
     return self.url
+
+
+db.create_all()
