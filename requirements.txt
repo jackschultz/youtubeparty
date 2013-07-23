@@ -1,0 +1,14 @@
+Flask==0.10.1
+Flask-SQLAlchemy==0.16
+Flask-Script==0.5.3
+Jinja2==2.7
+MarkupSafe==0.18
+SQLAlchemy==0.7.9
+Tempita==0.5.1
+Werkzeug==0.9.2
+decorator==3.4.0
+itsdangerous==0.22
+requests==1.2.3
+sqlalchemy-migrate==0.7.2
+webassets==0.8
+wsgiref==0.1.2
