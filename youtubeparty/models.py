@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from youtubeparty import app
+import uuid
 
 db = SQLAlchemy(app)
 
@@ -9,7 +10,11 @@ class Room(db.Model):
   urls = db.relationship('YTUrl', backref='room', lazy='dynamic')
  
   def __init__(self, name):
-    
+    check = not None
+    while check is not None:
+      poss_id = int(str(uuid.uuid4().int)[0:6])
+      check = Room.query.get(poss_id)
+    self.id = poss_id
     self.name = name
  
   def __repr__(self):

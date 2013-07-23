@@ -37,17 +37,22 @@ def room(rid):
       try:
         video_key = query_dict['v'][0]
       except ValueError:
-        #odd, but we need error checking. just ditch
+        errors = "Video not found"
+        return jsonify(success=False, errors=errors)
         abort(500)
       data_url = YOUTUBE_DATA_URL + video_key + YOUTUBE_DATA_PARAMS_URL
       resp = requests.get(data_url)
+      if resp.status_code != 200:
+        errors = "Video not found"
+        return jsonify(success=False, errors=errors)
       video_info_dict = resp.json()
       title = video_info_dict['entry']['title']['$t']
       url = YTUrl(poss_url, title, video_key, rid)
       db.session.add(url)
       db.session.commit()
       return jsonify(success=True)
-    return jsonify(success=False) #here we want to give errors...
+    errors = "Need Youtube url"
+    return jsonify(success=False, errors=errors) 
   queue = room.urls
   return render_template('room.html', queue=queue, room=room)
 
