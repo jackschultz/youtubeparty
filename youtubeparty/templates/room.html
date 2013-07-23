@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="row">
+  <h1 id="room-info" rid="{{room.id}}">{{room.name}}</h1>
+</div>
+
+<div class="row">
+  <div class="large-5 columns">
+      <div class="row">
+        <div class="queue-list">
+        </div>
+      </div>
+
+      <div class="row">
+          <form method="post" id="yt-url-upload">
+            <fieldset>
+              <legend>Url upload</legend>
+              <div class="row">
+                <div class="large-12 columns">
+                  <input type="text" name="youtube-url" id="yt-search" placeholder="youtube url">
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-12 columns">
+                  <button type="submit">Upload</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+      </div>
+    </div>
+
+    <div class="large-1 columns">
+    </div>
+
+    <div class="large-6 columns">
+      <div class="row">
+        <div id="yt-player">
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}

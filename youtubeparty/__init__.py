@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask#, render_template, url_for, request, redirect
 
 import os
 
@@ -9,7 +9,4 @@ app.config.from_object('youtubeparty.settings.DevConfig')
 app.debug = True
 
 import youtubeparty.views
-import youtubeparty.models
 
-if __name__ == '__main__':
-  app.run()
