@@ -12,47 +12,34 @@
   </head>
 
   <body>
-    <div class="fixed">
-     <nav class="top-bar hide-for-small">
-      <ul class="title-area">
-        <li class="name">
-          <h1><a href="/">Youtube Together</a></h1>
-        </li>
-      </ul>
+    <div id="wrap">
+      <div id="main">
+        <div class="fixed">
+         <nav class="top-bar hide-for-small">
+           <ul class="title-area">
+             <li class="name">
+               <h1><a href="/">Youtube Together</a></h1>
+             </li>
+           </ul>
+         </nav>
+      </div>
+      <div class="content" style="padding-top:60px;">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
 
-      {#
-      <section class="top-bar-section">
-        <!-- Right Nav Section -->
-        <ul class="right">
-          <li class="divider"></li>
-          <li><a href="/grid.php">Features</a></li>
-          <li class="divider"></li>
-          <li><a href="/templates.php">Add-ons</a></li>
-          <li class="divider"></li>
-          <li><a href="/case-jacquelinewest.php">Case Studies</a></li>
-          <li class="divider"></li>
-          <li><a href="/docs/">Docs</a></li>
-          <li class="divider"></li>
-          <li><a href="/training.php">Training</a></li>
-          <li class="divider"></li>
-          <li class="has-form">
-            <a href="http://foundation.zurb.com/docs" class="button">Getting Started</a>
-          </li>
-        </ul>
-      </section>
-#}
-    </nav>
-  </div>
-
-    <div class="content" style="padding-top:60px;">
-    {% block content %}
-    {% endblock %}
+    <div id="footer">
+      <div class="row">
+        © 2013 - Jack Schultz
+      </div>
     </div>
 
 
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    <script src="/static/js/ytp.js"></script>
+    {% block extra_script %}
+    {% endblock %}
 
 
 
