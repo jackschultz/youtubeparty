@@ -1,9 +1,12 @@
 class Config(object):
-  pass
+ YOUTUBE_URL = 'www.youtube.com'
+ YOUTUBE_DATA_URL = 'https://gdata.youtube.com/feeds/api/videos/'
+ YOUTUBE_DATA_PARAMS_URL = '?v=2&alt=json'
+
 
 
 class ProdConfig(Config):
-  pass
+  SQLALCHEMY_DATABASE_URI = 'sqlite:///datebase.db'
 
 
 class DevConfig(Config):

@@ -7,13 +7,9 @@ import json
 import requests
 import pdb
 
-YOUTUBE_URL = 'www.youtube.com'
-#for splitting up the get request for info
-YOUTUBE_DATA_URL = 'https://gdata.youtube.com/feeds/api/videos/'
-YOUTUBE_DATA_PARAMS_URL = '?v=2&alt=json'
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
+  asdf =qwer
   if request.method == 'POST':
     try:
       name = request.form['room-name']
@@ -31,7 +27,7 @@ def room(rid):
   if request.method == 'POST':
     poss_url = request.form['youtube-url']
     parsed_url = urlparse.urlparse(poss_url)
-    if parsed_url[1] == config.YOUTUBE_URL:
+    if parsed_url[1] == app.config['YOUTUBE_URL']:
       query_dict = cgi.parse_qs(parsed_url[4])
       try:
         video_key = query_dict['v'][0]
@@ -39,7 +35,7 @@ def room(rid):
         errors = "Video not found"
         return jsonify(success=False, errors=errors)
         abort(500)
-      data_url = YOUTUBE_DATA_URL + video_key + YOUTUBE_DATA_PARAMS_URL
+      data_url = app.config['YOUTUBE_DATA_URL'] + video_key + app.config['YOUTUBE_DATA_PARAMS_URL']
       resp = requests.get(data_url)
       if resp.status_code != 200:
         errors = "Video not found"
