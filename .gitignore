@@ -3,6 +3,8 @@
 *.swp
 *.swo
 
+logs/
+
 *.db
 .DS_Store
 

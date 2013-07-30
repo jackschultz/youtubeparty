@@ -9,7 +9,6 @@ import pdb
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-  asdf =qwer
   if request.method == 'POST':
     try:
       name = request.form['room-name']
