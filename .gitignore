@@ -3,6 +3,9 @@
 *.swp
 *.swo
 
+*.db
+.DS_Store
+
 #packages
 *.egg
 *.egg-info

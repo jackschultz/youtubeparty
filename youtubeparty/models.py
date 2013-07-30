@@ -36,5 +36,3 @@ class YTUrl(db.Model):
   def __repr__(self):
     return self.title
 
-db.create_all()
-

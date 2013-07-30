@@ -8,7 +8,6 @@ import requests
 import pdb
 
 YOUTUBE_URL = 'www.youtube.com'
-
 #for splitting up the get request for info
 YOUTUBE_DATA_URL = 'https://gdata.youtube.com/feeds/api/videos/'
 YOUTUBE_DATA_PARAMS_URL = '?v=2&alt=json'
@@ -16,7 +15,10 @@ YOUTUBE_DATA_PARAMS_URL = '?v=2&alt=json'
 @app.route('/', methods=['GET', 'POST'])
 def index():
   if request.method == 'POST':
-    name = request.form['room-name']
+    try:
+      name = request.form['room-name']
+    except KeyError:
+      abort(400)
     room = Room(name=name)
     db.session.add(room)
     db.session.commit()
@@ -25,14 +27,11 @@ def index():
   
 @app.route('/room/<rid>', methods=['GET', 'POST'])
 def room(rid):
-  room = Room.query.get(rid)
-  if room is None:
-    return abort(404)
+  room = Room.query.get_or_404(rid)
   if request.method == 'POST':
-    #pdb.set_trace()
     poss_url = request.form['youtube-url']
     parsed_url = urlparse.urlparse(poss_url)
-    if parsed_url[1] == YOUTUBE_URL:
+    if parsed_url[1] == config.YOUTUBE_URL:
       query_dict = cgi.parse_qs(parsed_url[4])
       try:
         video_key = query_dict['v'][0]
@@ -64,9 +63,6 @@ def update(rid):
   queue = room.urls
   queue_list = []
   for q in queue:
-    info = {}
-    info['title'] = q.title
-    info['key'] = q.video_key
-    queue_list.append(info)
+    queue_list.append({'title':q.title,'key':q.video_key})
   return jsonify(queue=queue_list)
 

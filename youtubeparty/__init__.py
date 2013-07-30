@@ -6,7 +6,6 @@ app = Flask(__name__)
 
 env = os.environ.get('YTP_ENV','prod')
 app.config.from_object('youtubeparty.settings.DevConfig')
-app.debug = True
 
 import youtubeparty.views
 
